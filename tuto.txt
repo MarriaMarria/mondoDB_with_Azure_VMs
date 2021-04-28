@@ -1,0 +1,8 @@
+npm install mongodb --save -> install mongoDB drivers (this includes mongodb folder inside nodemodules folder)
+
+start mongodb server -> sudo service mongod start
+without it there will be no connection to the server!
+
+
+
+
