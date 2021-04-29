@@ -27,10 +27,12 @@ VMs:
 1. Create one VM with public IP
 2. Connect to it with ssh -i key.pem adminUserName@publicIP
 3. Create anothe VM without public IP (choose none to public ip in networking)
-4. Copy the ssh key to this VM to VM1 with public IP. Use scp -i vm_key.pem vm-mongo_key.pem maria@20.65.46.130:~/projects/mongo
-vm-mongo_key.pem
+4. Copy the ssh key to this VM to VM1 with public IP. Use scp -i yourkey.pem fileToCopy.pem USER@PublicIP:~/where/to
 5. Give permissions to key with chmod 400
-6. Connect to VM1 using public IP, then connect to VM2 with sh -v -i vm-mongo_key.pem maria@10.20.0.5
+6. Connect to VM1 using public IP, then connect to VM2 with sh -v -i keyFromVMwithoutPublicIP.pem USER@PrivateIPofVM2
+7. VMs are in the same network and same subnet
+8. Remember to open port 27017 on both VMs as well as port for your API on the VM with public IP.
+
 
 
 To install mongo:
