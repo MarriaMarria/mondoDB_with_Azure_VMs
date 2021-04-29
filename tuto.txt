@@ -3,6 +3,58 @@ npm install mongodb --save -> install mongoDB drivers (this includes mongodb fol
 start mongodb server -> sudo service mongod start
 without it there will be no connection to the server!
 
+show dbs -> show databases
+use nameOfDB -> create database
+db.mDB.insert({"Did it work?": true}); -> inserting an object
+then we can do show dbs -> it will show our new DB 
+use nameOfDB, db.dropDatabase() -> to delete database
+MongoDB will create a collection implicitly upon its first use. You do not need to create a collection before inserting data. 
+db -> to confirm in which db we are
+we can create collections directly in our DB -> j = { name : "mongo" }
+to insert it we use db.nameOfCollection.insert( j )
+show collections -> to see collections
+db.collectionname.find() -> to query
+insert data with for loop:
+for (var i = 1; i <= 25; i++) {
+   db.testData.insert( { x : i } )
+}
+When you query a collection, MongoDB returns a “cursor” object that contains the results of the query. The mongo shell then iterates over the cursor to display the results. Rather than returning all results at once, the shell iterates over the cursor 20 times to display the first 20 results and then waits for a request to iterate over the remaining results. In the shell, enter it to iterate over the next set of results.
+
+
+
+
+VMs:
+1. Create one VM with public IP
+2. Connect to it with ssh -i key.pem adminUserName@publicIP
+3. Create anothe VM without public IP (choose none to public ip in networking)
+4. Copy the ssh key to this VM to VM1 with public IP. Use scp -i vm_key.pem vm-mongo_key.pem maria@20.65.46.130:~/projects/mongo
+vm-mongo_key.pem
+5. Give permissions to key with chmod 400
+6. Connect to VM1 using public IP, then connect to VM2 with sh -v -i vm-mongo_key.pem maria@10.20.0.5
+
+
+To install mongo:
+wget -qO - https://www.mongodb.org/static/pgp/server-4.4.asc | sudo apt-key add -
+it shall return ok
+
+check which ubuntu version you have; use command which is suitable for your version
+for 18 bionic it is :
+
+echo "deb [ arch=amd64,arm64 ] https://repo.mongodb.org/apt/ubuntu bionic/mongodb-org/4.4 multiverse" | sudo tee /etc/apt/sources.list.d/mongodb-org-4.4.list
+
+https://docs.mongodb.com/manual/tutorial/install-mongodb-on-ubuntu/
+
+sudo apt-get update
+sudo apt-get install -y mongodb-org
+
+ps --no-headers -o comm 1
+
+sudo systemctl start mongod
+
+sudo systemctl status mongod -> to check status
+
+use mongo with mongo
+
 
 
 
